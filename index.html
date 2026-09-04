@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kahsay Gebrekidan — IT Business Analyst &amp; Network Engineer</title>
+<meta name="description" content="Portfolio of Kahsay Gebrekidan — IT Business Analyst, Network & Telecom Engineer, and Software Developer based in Addis Ababa, Ethiopia.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1B2A4A;
+    --navy-dark:#13203A;
+    --navy-mid:#28395E;
+    --gold:#C8A24A;
+    --gold-soft:#E4D2A0;
+    --paper:#F7F6F2;
+    --panel:#FFFFFF;
+    --ink:#1F2430;
+    --slate:#5B6472;
+    --line:#E2E0D8;
+    --max:1120px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Source Sans 3', sans-serif;
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{
+    font-family:'Space Grotesk', sans-serif;
+    margin:0;
+    color:var(--navy);
+    line-height:1.15;
+  }
+  a{color:inherit;}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 32px;}
+  img{max-width:100%; display:block;}
+
+  /* ---------- Skip link for accessibility ---------- */
+  .skip-link{
+    position:absolute; left:-999px; top:0; background:var(--navy); color:#fff;
+    padding:10px 16px; z-index:200;
+  }
+  .skip-link:focus{ left:16px; top:16px; }
+
+  /* ---------- Nav ---------- */
+  header.site-nav{
+    position:sticky; top:0; z-index:100;
+    background:rgba(247,246,242,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:var(--max); margin:0 auto; padding:16px 32px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .nav-mark{
+    font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:19px;
+    color:var(--navy); text-decoration:none; letter-spacing:0.2px;
+  }
+  .nav-mark span{color:var(--gold);}
+  nav.nav-links{display:flex; gap:28px;}
+  nav.nav-links a{
+    text-decoration:none; color:var(--slate); font-size:15px; font-weight:600;
+    padding:6px 2px; border-bottom:2px solid transparent; transition:border-color .15s, color .15s;
+  }
+  nav.nav-links a:hover, nav.nav-links a:focus-visible{ color:var(--navy); border-color:var(--gold); }
+  .nav-toggle{ display:none; background:none; border:1px solid var(--line); border-radius:6px; padding:8px 10px; font-size:20px; color:var(--navy); }
+
+  @media (max-width:760px){
+    nav.nav-links{
+      position:fixed; inset:64px 0 auto 0; background:var(--panel);
+      flex-direction:column; gap:0; padding:8px 0; border-bottom:1px solid var(--line);
+      transform:translateY(-8px); opacity:0; pointer-events:none; transition:opacity .15s, transform .15s;
+    }
+    nav.nav-links.open{ transform:translateY(0); opacity:1; pointer-events:auto; }
+    nav.nav-links a{ padding:14px 32px; border-bottom:1px solid var(--line); }
+    .nav-toggle{ display:block; }
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{ padding:76px 0 64px; }
+  .hero-grid{
+    display:grid; grid-template-columns:1.05fr 0.95fr; gap:56px; align-items:center;
+  }
+  @media (max-width:900px){ .hero-grid{ grid-template-columns:1fr; } }
+
+  .eyebrow-loc{ color:var(--slate); font-size:14.5px; margin-bottom:14px; }
+  .eyebrow-loc .dot{ color:var(--gold); }
+
+  .hero h1{ font-size:clamp(34px,5vw,52px); font-weight:700; }
+  .hero h1 .accent{ color:var(--gold); }
+  .role-line{
+    margin-top:14px; font-size:17px; font-weight:600; color:var(--navy-mid);
+    display:flex; flex-wrap:wrap;
+  }
+  .role-line span{ margin-right:10px; }
+  .role-line .sep{ color:var(--gold); margin-right:10px; }
+
+  .hero-copy{ margin-top:22px; color:var(--slate); max-width:52ch; font-size:16.5px; }
+
+  .hero-cta{ margin-top:30px; display:flex; gap:14px; flex-wrap:wrap; }
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:12px 22px; border-radius:3px; font-weight:600; font-size:15px;
+    text-decoration:none; border:1.5px solid transparent; transition:transform .12s, background .15s, color .15s;
+  }
+  .btn-primary{ background:var(--navy); color:#fff; }
+  .btn-primary:hover{ background:var(--navy-dark); }
+  .btn-outline{ border-color:var(--navy); color:var(--navy); }
+  .btn-outline:hover{ background:var(--navy); color:#fff; }
+  .btn:active{ transform:translateY(1px); }
+
+  /* ---------- Hero diagram: the actual "stack" of what he does ---------- */
+  .stack-diagram{
+    background:var(--navy); border-radius:6px; padding:34px 30px;
+    position:relative; overflow:hidden;
+  }
+  .stack-diagram::before{
+    content:""; position:absolute; inset:0;
+    background-image:
+      linear-gradient(rgba(200,162,74,0.10) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(200,162,74,0.10) 1px, transparent 1px);
+    background-size:26px 26px;
+    pointer-events:none;
+  }
+  .stack-label{
+    position:relative; color:var(--gold-soft); font-size:12.5px; font-weight:600;
+    letter-spacing:0.06em; margin-bottom:18px; font-family:'Space Grotesk',sans-serif;
+  }
+  .stack-layer{
+    position:relative; background:rgba(255,255,255,0.04);
+    border:1px solid rgba(200,162,74,0.35); border-radius:4px;
+    padding:16px 18px; margin-bottom:14px;
+  }
+  .stack-layer:last-child{ margin-bottom:0; }
+  .stack-layer h4{ color:#fff; font-size:16px; font-weight:600; }
+  .stack-layer p{ margin:6px 0 0; color:#C7CEDD; font-size:13.5px; }
+  .stack-connector{
+    position:relative; width:2px; height:14px; background:var(--gold); margin:0 0 0 22px;
+    opacity:0.65;
+  }
+
+  /* ---------- Section shell ---------- */
+  section{ padding:64px 0; border-top:1px solid var(--line); }
+  .section-head{ margin-bottom:36px; max-width:60ch; }
+  .section-head h2{ font-size:clamp(26px,3.4vw,32px); font-weight:700; }
+  .section-head .rule{ width:46px; height:3px; background:var(--gold); margin:14px 0 16px; }
+  .section-head p{ color:var(--slate); font-size:16px; }
+
+  /* ---------- About ---------- */
+  .about-body{ max-width:74ch; color:var(--ink); font-size:17px; }
+  .about-facts{
+    margin-top:30px; display:grid; grid-template-columns:repeat(3,1fr); gap:24px;
+  }
+  @media (max-width:700px){ .about-facts{ grid-template-columns:1fr 1fr; } }
+  .fact{ border-left:3px solid var(--gold); padding-left:14px; }
+  .fact .num{ font-family:'Space Grotesk',sans-serif; font-size:26px; font-weight:700; color:var(--navy); }
+  .fact .lbl{ color:var(--slate); font-size:13.5px; margin-top:2px; }
+
+  /* ---------- Experience timeline ---------- */
+  .timeline{ position:relative; padding-left:28px; }
+  .timeline::before{
+    content:""; position:absolute; left:5px; top:6px; bottom:6px; width:2px; background:var(--line);
+  }
+  .tl-item{ position:relative; padding-bottom:40px; }
+  .tl-item:last-child{ padding-bottom:0; }
+  .tl-dot{
+    position:absolute; left:-28px; top:4px; width:11px; height:11px; border-radius:50%;
+    background:var(--gold); border:2px solid var(--paper); box-shadow:0 0 0 2px var(--gold);
+  }
+  .tl-head{ display:flex; flex-wrap:wrap; align-items:baseline; gap:8px 12px; }
+  .tl-role{ font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:19px; color:var(--navy); }
+  .tl-company{ color:var(--gold); font-weight:600; font-size:15px; }
+  .tl-dates{ margin-left:auto; color:var(--slate); font-size:14px; white-space:nowrap; }
+  .tl-list{ margin:12px 0 0; padding-left:20px; color:var(--ink); }
+  .tl-list li{ margin-bottom:7px; font-size:15.5px; }
+
+  /* ---------- Skills ---------- */
+  .skills-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:32px 40px; }
+  @media (max-width:700px){ .skills-grid{ grid-template-columns:1fr; } }
+  .skill-group{ border-left:3px solid var(--navy); padding-left:18px; }
+  .skill-group.g-gold{ border-color:var(--gold); }
+  .skill-group h3{ font-size:17px; font-weight:600; }
+  .tag-row{ margin-top:12px; display:flex; flex-wrap:wrap; gap:8px; }
+  .tag{
+    font-size:13.5px; color:var(--navy); background:#EFEDE5; border:1px solid var(--line);
+    padding:5px 11px; border-radius:3px;
+  }
+
+  /* ---------- Certifications ---------- */
+  .cert-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:30px 40px; }
+  @media (max-width:700px){ .cert-grid{ grid-template-columns:1fr; } }
+  .cert-group h3{ font-size:16px; font-weight:600; color:var(--navy); padding-bottom:8px; border-bottom:1px solid var(--line); margin-bottom:12px; }
+  .cert-group ul{ margin:0; padding:0; list-style:none; }
+  .cert-group li{
+    font-size:14.5px; color:var(--ink); padding:7px 0; border-bottom:1px dashed var(--line);
+    display:flex; justify-content:space-between; gap:10px;
+  }
+  .cert-group li:last-child{ border-bottom:none; }
+  .cert-group .c-date{ color:var(--slate); font-size:13px; white-space:nowrap; }
+
+  /* ---------- Education ---------- */
+  .edu-card{
+    display:flex; gap:24px; flex-wrap:wrap; justify-content:space-between; align-items:baseline;
+  }
+  .edu-card h3{ font-size:19px; }
+  .edu-meta{ color:var(--slate); font-size:14.5px; margin-top:4px; }
+  .edu-grade{ font-weight:600; color:var(--navy); }
+  .edu-course{ margin-top:14px; color:var(--slate); font-size:14.5px; max-width:74ch; }
+
+  /* ---------- Contact ---------- */
+  .contact-section{ background:var(--navy); border-top:none; }
+  .contact-inner{ display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:28px; }
+  .contact-section h2{ color:#fff; }
+  .contact-section p{ color:#C7CEDD; max-width:48ch; }
+  .contact-list{ display:flex; flex-direction:column; gap:10px; }
+  .contact-list a{ color:var(--gold-soft); text-decoration:none; font-weight:600; }
+  .contact-list a:hover{ text-decoration:underline; }
+  .contact-list .clabel{ color:#8C97AE; font-size:12.5px; margin-right:8px; }
+
+  footer{
+    background:var(--navy-dark); color:#8C97AE; font-size:13.5px; padding:22px 0;
+  }
+  footer .wrap{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <a class="nav-mark" href="#top">KG<span>.</span></a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Toggle menu">☰</button>
+    <nav class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- HERO -->
+  <div id="top" class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow-loc">Addis Ababa, Ethiopia <span class="dot">•</span> Available for new opportunities</div>
+        <h1>Kahsay Gebrekidan</h1>
+        <div class="role-line">
+          <span>IT Business Analyst</span><span class="sep">/</span>
+          <span>Network &amp; Telecom Engineer</span><span class="sep">/</span>
+          <span>Software Developer</span>
+        </div>
+        <p class="hero-copy">
+          I sit at the intersection of business requirements, backend systems, and the network they run on —
+          8+ years turning stakeholder needs into shipped APIs and stable infrastructure at organizations like
+          Dashen Bank and Ethiopia's INSA.
+        </p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="resume.pdf" download>Download résumé</a>
+          <a class="btn btn-outline" href="mailto:kahsay.gkidan24@gmail.com">Get in touch</a>
+        </div>
+      </div>
+
+      <div class="stack-diagram" role="img" aria-label="Diagram of three connected work layers: business analysis, software development, and network infrastructure">
+        <div class="stack-label">HOW A REQUIREMENT BECOMES A RUNNING SYSTEM</div>
+        <div class="stack-layer">
+          <h4>Business Analysis</h4>
+          <p>Stakeholder requirements, user stories, FR/NFR, backlog</p>
+        </div>
+        <div class="stack-connector"></div>
+        <div class="stack-layer">
+          <h4>Software Development</h4>
+          <p>Spring Boot APIs, React.js frontends, SDLC &amp; testing</p>
+        </div>
+        <div class="stack-connector"></div>
+        <div class="stack-layer">
+          <h4>Network &amp; Infrastructure</h4>
+          <p>LAN/VLAN design, VPN &amp; access control, automation</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Profile</h2>
+        <div class="rule"></div>
+      </div>
+      <p class="about-body">
+        IT professional with 8+ years of experience spanning IT business analysis, network and telecom
+        engineering, and software development. Skilled at translating business requirements into technical
+        solutions, with hands-on expertise in REST APIs, Spring Boot, Python, and enterprise network
+        infrastructure. Proven ability to work across the full technology stack — from backend development
+        and system administration to network operations and stakeholder analysis.
+      </p>
+      <div class="about-facts">
+        <div class="fact"><div class="num">8+</div><div class="lbl">Years in IT</div></div>
+        <div class="fact"><div class="num">3</div><div class="lbl">Disciplines: BA, Dev, Network</div></div>
+        <div class="fact"><div class="num">20+</div><div class="lbl">Professional certifications</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Experience</h2>
+        <div class="rule"></div>
+        <p>A career built across banking, government telecom, and contract software delivery.</p>
+      </div>
+
+      <div class="timeline">
+
+        <div class="tl-item">
+          <span class="tl-dot"></span>
+          <div class="tl-head">
+            <span class="tl-role">IT Business Analyst</span>
+            <span class="tl-company">Dashen Bank S.C.</span>
+            <span class="tl-dates">Jan 2025 – Present</span>
+          </div>
+          <ul class="tl-list">
+            <li>Led requirements engineering for payment integration and automation systems — gathering business and product requirements from stakeholders and translating them into use cases, user stories, and functional/non-functional specifications using Agile and Waterfall methodologies.</li>
+            <li>Managed requirements throughout the SDLC, from elicitation through UAT and end-to-end testing, coordinating with cross-functional teams across 10+ projects and reducing post-deployment defects by 30%.</li>
+            <li>Built and maintained product backlogs and user stories in Jira, assigning and tracking delivery across a team of developers, which improved sprint delivery velocity.</li>
+            <li>Acted as the primary liaison between business stakeholders and technical teams, aligning priorities across departments and increasing on-time feature delivery by 15%.</li>
+            <li>Designed and developed role-based automation-system backend REST API endpoints in Spring Boot, and built React.js frontend features integrated via Axios, which reduced manual processing by 40%.</li>
+          </ul>
+        </div>
+
+        <div class="tl-item">
+          <span class="tl-dot"></span>
+          <div class="tl-head">
+            <span class="tl-role">Network &amp; Telecom Engineer</span>
+            <span class="tl-company">insa.gov.et</span>
+            <span class="tl-dates">Aug 2019 – Jan 2025</span>
+          </div>
+          <ul class="tl-list">
+            <li>Designed, configured, and maintained LAN switching infrastructure — including VLAN segmentation and routing — across multiple switches, improving network stability and reducing downtime incidents by 25%.</li>
+            <li>Implemented access control and VPN solutions to secure network access, enabling secure remote connectivity for 200+ users and cutting unauthorized access attempts by 60%.</li>
+            <li>Extended IT infrastructure design to additional sites, aligning network architecture with organizational security and scalability requirements.</li>
+            <li>Applied Python for network automation and operational tooling, which reduced manual configuration time by 50%.</li>
+            <li>Supported end users and network security operations, sustaining 99% network uptime across 100+ devices.</li>
+          </ul>
+        </div>
+
+        <div class="tl-item">
+          <span class="tl-dot"></span>
+          <div class="tl-head">
+            <span class="tl-role">System Software Developer</span>
+            <span class="tl-company">insa.gov.et</span>
+            <span class="tl-dates">Feb 2019 – Jul 2019</span>
+          </div>
+          <ul class="tl-list">
+            <li>Owned the full lifecycle for internal system solutions — including requirements collection, analysis, development, testing, and deployment.</li>
+          </ul>
+        </div>
+
+        <div class="tl-item">
+          <span class="tl-dot"></span>
+          <div class="tl-head">
+            <span class="tl-role">Trainee</span>
+            <span class="tl-company">insa.gov.et</span>
+            <span class="tl-dates">Feb 2018 – Feb 2019</span>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <span class="tl-dot"></span>
+          <div class="tl-head">
+            <span class="tl-role">Full-stack Developer (Contract)</span>
+            <span class="tl-company">Aelaf &amp; LT Software Engineering PLC</span>
+            <span class="tl-dates">Nov 2017 – Aug 2018</span>
+          </div>
+          <ul class="tl-list">
+            <li>Designed and developed a SOAP-based web service using JAX-WS and WSDL, enabling integration with external systems.</li>
+            <li>Implemented the persistence layer using Hibernate with MySQL, supporting reliable data access with 95% query accuracy.</li>
+            <li>Developed an enterprise-level, data-rich Flex application using ActionScript and MXML.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Skills</h2>
+        <div class="rule"></div>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <h3>Development</h3>
+          <div class="tag-row">
+            <span class="tag">REST APIs</span><span class="tag">Spring Boot</span><span class="tag">React.js</span>
+            <span class="tag">Axios</span><span class="tag">Tailwind CSS</span><span class="tag">Java</span>
+            <span class="tag">Python</span><span class="tag">SOAP</span><span class="tag">JAX-WS</span>
+            <span class="tag">WSDL</span><span class="tag">Hibernate</span><span class="tag">Flex / ActionScript / MXML</span>
+            <span class="tag">Git</span><span class="tag">VS Code</span>
+          </div>
+        </div>
+        <div class="skill-group g-gold">
+          <h3>Business Analysis</h3>
+          <div class="tag-row">
+            <span class="tag">Requirements Engineering</span><span class="tag">Requirements Management</span>
+            <span class="tag">User Story Development</span><span class="tag">Jira</span>
+            <span class="tag">SDLC</span><span class="tag">Business Modeling</span><span class="tag">Agile Methodologies</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>Databases &amp; Identity</h3>
+          <div class="tag-row">
+            <span class="tag">Oracle</span><span class="tag">MySQL</span><span class="tag">PostgreSQL</span>
+            <span class="tag">SQL</span><span class="tag">PL/SQL</span><span class="tag">Keycloak</span>
+          </div>
+        </div>
+        <div class="skill-group g-gold">
+          <h3>Networking</h3>
+          <div class="tag-row">
+            <span class="tag">LAN Switching</span><span class="tag">VLAN</span><span class="tag">Routing</span>
+            <span class="tag">VPN</span><span class="tag">Access Control</span><span class="tag">IT Infrastructure Design</span>
+            <span class="tag">Network Architecture</span><span class="tag">Network Security</span><span class="tag">BGP</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certifications">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Certifications</h2>
+        <div class="rule"></div>
+        <p>20+ certifications across business analysis, development, networking, and security — grouped by discipline.</p>
+      </div>
+      <div class="cert-grid">
+        <div class="cert-group">
+          <h3>Business Analysis</h3>
+          <ul>
+            <li><span>Agile Business Analysis — LinkedIn</span><span class="c-date">Dec 2025</span></li>
+            <li><span>Atlassian Agile PM Professional Cert. — Atlassian/LinkedIn</span><span class="c-date">Oct 2024 / Oct 2025</span></li>
+            <li><span>Learning Jira Software — LinkedIn</span><span class="c-date">Oct 2024</span></li>
+          </ul>
+        </div>
+        <div class="cert-group">
+          <h3>Development</h3>
+          <ul>
+            <li><span>Spring Boot &amp; React: Build Scalable Web Apps — LinkedIn</span><span class="c-date">Sep 2026</span></li>
+            <li><span>Creating Spring Boot Microservices — LinkedIn</span><span class="c-date">Oct 2025</span></li>
+            <li><span>Building APIs with Swagger &amp; OpenAPI — LinkedIn</span><span class="c-date">Oct 2025</span></li>
+            <li><span>Build REST APIs with FastAPI — LinkedIn</span><span class="c-date">Dec 2025</span></li>
+            <li><span>Python Professional Certificate — OpenEDG</span><span class="c-date">Oct 2024</span></li>
+          </ul>
+        </div>
+        <div class="cert-group">
+          <h3>Networking</h3>
+          <ul>
+            <li><span>CCNA Certification — Cybrary</span><span class="c-date">Jun 2023</span></li>
+            <li><span>CompTIA Network+ (N10-008) — LinkedIn</span><span class="c-date">Oct 2024</span></li>
+            <li><span>Cisco CCNP ENCOR (350-401) — LinkedIn</span><span class="c-date">Oct 2024</span></li>
+            <li><span>BGP Essential Training — LinkedIn</span><span class="c-date">Oct 2024</span></li>
+          </ul>
+        </div>
+        <div class="cert-group">
+          <h3>IT &amp; Security</h3>
+          <ul>
+            <li><span>Certified in Cybersecurity (CC) — ISC2</span><span class="c-date">Jun 2023</span></li>
+            <li><span>Career Essentials in Cybersecurity — Microsoft</span><span class="c-date">Oct 2024</span></li>
+            <li><span>Putting ITIL® Into Practice (ITIL 4) — LinkedIn</span><span class="c-date">Oct 2024</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Education</h2>
+        <div class="rule"></div>
+      </div>
+      <div class="edu-card">
+        <div>
+          <h3>BSc, Information Technology (Engineering)</h3>
+          <div class="edu-meta">Mekelle Institute of Technology, Mekelle University · Oct 2012 – Jul 2017</div>
+        </div>
+        <div class="edu-grade">Grade: 3.75 / 4.0</div>
+      </div>
+      <p class="edu-course">
+        Key coursework: Data Structures &amp; Algorithms, Software Engineering, OOP System Design, Web Services,
+        Network Security, Databases (Oracle PL/SQL), Data Warehousing &amp; Mining.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="wrap contact-inner">
+    <div>
+      <h2>Let's work together</h2>
+      <p>Open to IT business analyst, network engineering, and full-stack development roles — reach out any time.</p>
+    </div>
+    <div class="contact-list">
+      <div><span class="clabel">Email</span><a href="mailto:kahsay.gkidan24@gmail.com">kahsay.gkidan24@gmail.com</a></div>
+      <div><span class="clabel">Phone</span><a href="tel:+251993639841">+251-993 639 841</a></div>
+      <div><span class="clabel">LinkedIn</span><a href="https://www.linkedin.com/in/kahsaygkidan/" target="_blank" rel="noopener">linkedin.com/in/kahsaygkidan</a></div>
+      <div><span class="clabel">Location</span><span style="color:#C7CEDD">Addis Ababa, Ethiopia</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Kahsay Gebrekidan</span>
+    <span>Built with HTML &amp; CSS · Hosted on GitHub Pages</span>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('navToggle');
+  const links = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    links.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }));
+</script>
+
+</body>
+</html>
